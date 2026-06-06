@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{dd/MM/yyyy HH:mm:ss.SSS} [%-5level] %logger{36} — %msg%n</Property>
+        <Property name="LOG_DIR">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Console (apenas WARN e acima para não poluir o CLI) -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%-5level] %msg%n"/>
+            <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <!-- Arquivo rotativo — grava tudo a partir de INFO -->
+        <RollingFile name="FileAppender"
+                     fileName="${LOG_DIR}/inovatech.log"
+                     filePattern="${LOG_DIR}/inovatech-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <!-- Arquivo separado para erros críticos de auditoria -->
+        <RollingFile name="AuditAppender"
+                     fileName="${LOG_DIR}/auditoria.log"
+                     filePattern="${LOG_DIR}/auditoria-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="90"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- Logger específico para auditoria de serviços -->
+        <Logger name="br.com.inovatech.service" level="INFO" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="AuditAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <!-- Logger geral da aplicação -->
+        <Logger name="br.com.inovatech" level="INFO" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+
+        <!-- Root logger -->
+        <Root level="WARN">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

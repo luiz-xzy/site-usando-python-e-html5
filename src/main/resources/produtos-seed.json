@@ -1,0 +1,69 @@
+{
+  "products" : [
+    {
+      "id" : 101,
+      "sku" : "IPH-15-PRO",
+      "name" : "iPhone 15 Pro Max",
+      "costPrice" : 4500.00,
+      "sellingPrice" : 7999.00,
+      "currentQuantity" : 15,
+      "minThreshold" : 5,
+      "active" : true,
+      "editHistory" : [
+        "[01/01/2025 08:00:00] Produto criado."
+      ]
+    },
+    {
+      "id" : 102,
+      "sku" : "SAM-S24-ULT",
+      "name" : "Samsung Galaxy S24 Ultra",
+      "costPrice" : 3800.00,
+      "sellingPrice" : 6499.00,
+      "currentQuantity" : 3,
+      "minThreshold" : 5,
+      "active" : true,
+      "editHistory" : [
+        "[01/01/2025 08:05:00] Produto criado."
+      ]
+    },
+    {
+      "id" : 103,
+      "sku" : "NOT-DELL-I7",
+      "name" : "Notebook Dell Inspiron i7",
+      "costPrice" : 2200.00,
+      "sellingPrice" : 3799.00,
+      "currentQuantity" : 8,
+      "minThreshold" : 3,
+      "active" : true,
+      "editHistory" : [
+        "[01/01/2025 08:10:00] Produto criado."
+      ]
+    },
+    {
+      "id" : 104,
+      "sku" : "MON-LG-27-4K",
+      "name" : "Monitor LG 27\" 4K UHD",
+      "costPrice" : 1100.00,
+      "sellingPrice" : 1799.00,
+      "currentQuantity" : 2,
+      "minThreshold" : 4,
+      "active" : true,
+      "editHistory" : [
+        "[01/01/2025 08:15:00] Produto criado."
+      ]
+    },
+    {
+      "id" : 105,
+      "sku" : "KBD-MECH-MXRED",
+      "name" : "Teclado Mecânico MX Red",
+      "costPrice" : 250.00,
+      "sellingPrice" : 449.00,
+      "currentQuantity" : 25,
+      "minThreshold" : 10,
+      "active" : true,
+      "editHistory" : [
+        "[01/01/2025 08:20:00] Produto criado."
+      ]
+    }
+  ]
+}
